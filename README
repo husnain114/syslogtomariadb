@@ -9,7 +9,7 @@ PROCESS:
    touch /var/log/mysql.pipe
    
 5. Download the file "SysLogToMariaDB.service" under "/etc/systemd/system" and make it executable with "chmod +x"
-6. Connect to MariaDB and add a DB called "logs" with the table structure as e.g. as:
+6. Connect to MariaDB and add a DB called "syslog" with the table structure as e.g. as:
 
   (host,facility,priority,level,tag,datetime,program,msg)
   
@@ -22,3 +22,18 @@ PROCESS:
   Check the status with:
   
   systemctl status SysLogToMariaDB.service
+  
+  -------------------------------
+  HOW TO CHECK THE LOGS WITH WEB
+  -------------------------------
+1. Install httpd on your linux system e.g.
+
+yum install httpd -y
+systemct enable httpd
+systemctl start httpd
+
+2. Download fetch.php and index.php and place them under /var/www/html
+3. Make the file executable
+4. Edit fetch.php and change the connection detals of myself as per your environment
+
+Once done, you can connect to the Web GUI using http://<Your Server IP>/index.php
