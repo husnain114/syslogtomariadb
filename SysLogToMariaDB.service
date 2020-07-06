@@ -1,0 +1,11 @@
+[Unit]
+Description=SysLog-To-MariaDB Service
+
+[Service]
+WorkingDirectory=/home/scripts/
+ExecStart=/home/scripts/syslogtomysql.sh
+PIDFile=/var/log/syslogtomysql.pid
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
